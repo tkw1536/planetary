@@ -31,7 +31,7 @@ JOBAD.modules.register({
   },
   init: function(JOBADInstance){
     var notifications = Drupal.settings.localcomments.comments;
-    var comment_types = this.getCommentTypes(); 
+    var comment_types = this.getCommentTypes();  
 
     for(var i=0;i<notifications.length;i++){
       (function(){
@@ -42,7 +42,8 @@ JOBAD.modules.register({
             "click": function(){
               location.href = me.dest_url; 
             },
-            "icon": comment_types[me.type]
+	    "class": "none", 
+            "icon": comment_types[me.type.replace("\n","")]
           }).on("contextmenu", false);
       })()
     }
